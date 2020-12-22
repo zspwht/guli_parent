@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: serviceedu
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+logging:
+  level:
+    com.atguigu.edu.mapper: debug
