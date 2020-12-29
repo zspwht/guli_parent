@@ -41,8 +41,13 @@ public class TeacherController {
     @DeleteMapping("{id}")
     public Result deleteById(@ApiParam(name = "id",value = "讲师id",required = true)
                                   @PathVariable String id){
-         teacherService.removeById(id);
-         return Result.ok();
+        boolean result = teacherService.removeById(id);
+        if(result){
+            return Result.ok();
+        }else{
+            return Result.error().message("删除失败");
+        }
+
     }
 
     //分页查询
