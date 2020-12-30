@@ -16,6 +16,6 @@ public class LoginController {
     @ApiOperation("获取信息")
     @GetMapping("/info")
     public Result info(){
-        return Result.ok().data("roles","[admin]");
+        return Result.ok().data("roles","[admin]").data("avatar","https://gulishop-file.oss-cn-beijing.aliyuncs.com/avatar/default.png");
     }
 }
