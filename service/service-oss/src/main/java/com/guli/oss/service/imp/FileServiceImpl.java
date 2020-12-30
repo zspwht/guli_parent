@@ -26,7 +26,7 @@ public class FileServiceImpl implements FileService {
             OSS oss = new OSSClientBuilder().build(endpoint, keyId, keySecret);
             if (!oss.doesBucketExist(bucketName)) {
                 oss.createBucket(bucketName);
-                oss.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);
+                oss.setBucketAcl( bucketName, CannedAccessControlList.PublicRead);
             }
 
             InputStream inputStream = file.getInputStream();
@@ -38,7 +38,7 @@ public class FileServiceImpl implements FileService {
             String fileUrl = filePath+"/"+newName;
             oss.putObject(bucketName,fileUrl,inputStream);
             oss.shutdown();
-            uploadUrl = endpoint+"/"+fileUrl;
+            uploadUrl ="https://"+bucketName+"."+endpoint+"/"+fileUrl;
         } catch (IOException e) {
             e.printStackTrace();
         }
