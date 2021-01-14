@@ -3,15 +3,15 @@ package com.atguigu.edu.controller;
 
 import com.atguigu.commonutils.Result;
 import com.atguigu.edu.service.SubjectService;
+import com.atguigu.edu.vo.SubjectNestedVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * <p>
@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @Api("课程分类管理")
 @CrossOrigin
-@RequestMapping("/edu/subject")
+@RequestMapping("/admin/edu/subject")
 public class SubjectController {
     @Autowired
     private SubjectService subjectService;
@@ -35,6 +35,12 @@ public class SubjectController {
     public Result addSubject(MultipartFile file){
         subjectService.importSubjectData(file,subjectService);
         return Result.ok();
+    }
+    @ApiOperation("嵌套数据列表")
+    @GetMapping("")
+    public Result nestedList(){
+        List<SubjectNestedVo> subjectNestedVoList =  subjectService.nestedList();
+        return Result.ok().data("items",subjectNestedVoList);
     }
 }
 
