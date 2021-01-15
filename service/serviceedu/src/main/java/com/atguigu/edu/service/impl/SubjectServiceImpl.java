@@ -1,7 +1,7 @@
 package com.atguigu.edu.service.impl;
 
 import com.alibaba.excel.EasyExcel;
-import com.atguigu.edu.entity.ExcelSubjectData;
+import com.atguigu.edu.dto.ExcelSubjectData;
 import com.atguigu.edu.entity.Subject;
 import com.atguigu.edu.listener.SubjectExcelListener;
 import com.atguigu.edu.mapper.SubjectMapper;
@@ -11,7 +11,6 @@ import com.atguigu.edu.vo.SubjectVo;
 import com.atguigu.servicebase.handle.MyException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.gson.internal.$Gson$Preconditions;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

@@ -2,8 +2,7 @@ package com.atguigu.edu.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.alibaba.excel.read.listener.ReadListener;
-import com.atguigu.edu.entity.ExcelSubjectData;
+import com.atguigu.edu.dto.ExcelSubjectData;
 import com.atguigu.edu.entity.Subject;
 import com.atguigu.edu.service.SubjectService;
 import com.atguigu.servicebase.handle.MyException;
