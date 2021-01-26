@@ -3,6 +3,7 @@ package com.atguigu.edu.controller;
 
 import com.atguigu.commonutils.Result;
 import com.atguigu.edu.dto.CoursInfoForm;
+import com.atguigu.edu.entity.Course;
 import com.atguigu.edu.service.CourseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,18 @@ public class CourseController {
         }else{
             return Result.error().message("保存失败");
         }
+    }
+
+    /**
+     * 根据id查询课程
+     * @param id
+     * @return
+     */
+    @ApiOperation("根据id查询课程")
+    @GetMapping("courseInfo/{id}")
+    public Result searchCourseById(@PathVariable("id") String id){
+        CoursInfoForm courseInfo = courseService.findCourseById(id);
+        return Result.ok().data("item",courseInfo);
     }
 }
 

@@ -44,4 +44,19 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         }
         return course.getId();
     }
+
+    @Override
+    public CoursInfoForm findCourseById(String id) {
+        Course course = this.getById(id);
+        if(course==null){
+            throw new MyException(20001,"数据不存在");
+        }
+        CoursInfoForm coursInfoForm = new CoursInfoForm();
+        BeanUtils.copyProperties(course,coursInfoForm);
+        CourseDescription description = courseDescriptionService.getById(id);
+        if(description!=null){
+            coursInfoForm.setDescription(description.getDescription());
+        }
+        return coursInfoForm;
+    }
 }
