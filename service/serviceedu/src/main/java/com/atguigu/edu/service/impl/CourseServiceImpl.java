@@ -59,4 +59,23 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         }
         return coursInfoForm;
     }
+
+    @Override
+    public void updateCorseInfo(CoursInfoForm coursInfoForm) {
+        //保存课程基本信息
+        Course course = new Course();
+        BeanUtils.copyProperties(coursInfoForm,course);
+        boolean isSuccess = this.updateById(course);
+        if(!isSuccess){
+            throw new MyException(20001,"课程信息保存失败");
+        }
+        //保存课程详细信息
+        CourseDescription courseDescription = new CourseDescription();
+        courseDescription.setId(course.getId());
+        courseDescription.setDescription(coursInfoForm.getDescription());
+        boolean resultCD = courseDescriptionService.updateById(courseDescription);
+        if(!resultCD){
+            throw  new MyException(20001,"课程详细信息保存失败");
+        }
+    }
 }

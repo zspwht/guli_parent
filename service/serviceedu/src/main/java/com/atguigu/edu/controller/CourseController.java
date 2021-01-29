@@ -51,5 +51,12 @@ public class CourseController {
         CoursInfoForm courseInfo = courseService.findCourseById(id);
         return Result.ok().data("item",courseInfo);
     }
+
+    @ApiOperation("更新课程")
+    @PostMapping("courseInfo/{id}")
+    public Result updateCourseInfo(@PathVariable String id,@RequestBody CoursInfoForm coursInfoForm){
+        courseService.updateCorseInfo(coursInfoForm);
+        return Result.ok().data("courseId",id);
+    }
 }
 
