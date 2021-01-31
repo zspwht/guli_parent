@@ -5,6 +5,7 @@ import com.atguigu.commonutils.Result;
 import com.atguigu.edu.dto.CoursInfoForm;
 import com.atguigu.edu.entity.Course;
 import com.atguigu.edu.service.CourseService;
+import com.atguigu.edu.vo.CoursePublicVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -57,6 +58,20 @@ public class CourseController {
     public Result updateCourseInfo(@PathVariable String id,@RequestBody CoursInfoForm coursInfoForm){
         courseService.updateCorseInfo(coursInfoForm);
         return Result.ok().data("courseId",id);
+    }
+
+    @ApiOperation("根据课程id查找发布信息")
+    @GetMapping("coursePubicInfo/{id}")
+    public Result getCoursePublishById(@PathVariable String id){
+        CoursePublicVo coursePublicInfo = courseService.searchCoursePublishById(id);
+        return Result.ok().data("item",coursePublicInfo);
+    }
+
+    @ApiOperation("根据id发布课程")
+    @PostMapping("publishCourse/{id}")
+    public Result publishCourseById(@PathVariable String id){
+        courseService.publishCourseById(id);
+        return Result.ok();
     }
 }
 

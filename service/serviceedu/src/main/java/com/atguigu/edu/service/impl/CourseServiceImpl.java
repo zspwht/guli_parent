@@ -6,8 +6,10 @@ import com.atguigu.edu.entity.CourseDescription;
 import com.atguigu.edu.mapper.CourseMapper;
 import com.atguigu.edu.service.CourseDescriptionService;
 import com.atguigu.edu.service.CourseService;
+import com.atguigu.edu.vo.CoursePublicVo;
 import com.atguigu.servicebase.handle.MyException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-01-15
  */
 @Service
+@Slf4j
 public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> implements CourseService {
     @Autowired
     private CourseDescriptionService courseDescriptionService;
@@ -77,5 +80,28 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         if(!resultCD){
             throw  new MyException(20001,"课程详细信息保存失败");
         }
+    }
+
+    /**
+     * 根据课程id查找课程发布信息
+     * @param id
+     * @return
+     */
+    @Override
+    public CoursePublicVo searchCoursePublishById(String id) {
+        return baseMapper.getCoursePublishById(id);
+    }
+
+    /**
+     * 根据id发布课程
+     * @param id
+     */
+    @Override
+    public void publishCourseById(String id) {
+        Course course = new Course();
+        course.setId(id);
+        course.setStatus("Normal");
+        int i = baseMapper.updateById(course);
+        log.info("是否成功：{}",i);
     }
 }

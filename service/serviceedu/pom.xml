@@ -10,7 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>serviceedu</artifactId>
-
+    <properties>
+        <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>com.atguigu</groupId>
@@ -34,4 +37,24 @@
                 <optional>true</optional>
             </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.atguigu.edu.EduApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>
