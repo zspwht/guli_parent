@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -15,6 +16,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @ComponentScan("com.atguigu")
+@EnableDiscoveryClient
 public class EduApplication extends SpringBootServletInitializer {
     @Autowired
     private ApplicationContext applicationContext;

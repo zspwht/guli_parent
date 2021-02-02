@@ -37,4 +37,12 @@ public class EduApplicationTest {
         System.out.println(coursePublicVo);
 
     }
+    /**
+     * 根据id删除课程信息
+     */
+    @Test
+    public void testDeleteCourseInfoById(){
+        Boolean aBoolean = courseService.removeCourseById("1354969276256669697");
+        System.out.println(aBoolean);
+    }
 }
