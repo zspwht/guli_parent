@@ -1,5 +1,3 @@
-package com.atguigu.eduservice;
-
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -10,7 +8,6 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import org.junit.Test;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 
 public class CodeGenerator {
     @Test
@@ -21,7 +18,7 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         System.out.println(projectPath);
-        /*gc.setOutputDir(projectPath+"/src/main/java");
+        gc.setOutputDir(projectPath+"/src/main/java");
         gc.setAuthor("atguigu");
         gc.setOpen(false);//生成后是否打开资源管理器
         gc.setFileOverride(false); //重新生成时文件是否覆盖
@@ -40,7 +37,7 @@ public class CodeGenerator {
         autoGenerator.setDataSource(dataSourceConfig);
         //包配置
         PackageConfig packageConfig = new PackageConfig();
-        packageConfig.setModuleName("edu"); //模块名
+        packageConfig.setModuleName("crm"); //模块名
         packageConfig.setParent("com.atguigu");
         packageConfig.setController("controller");
         packageConfig.setEntity("entity");
@@ -49,7 +46,7 @@ public class CodeGenerator {
         autoGenerator.setPackageInfo(packageConfig);
         //策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
-        strategyConfig.setInclude("edu_video");
+        strategyConfig.setInclude("crm_banner");
         strategyConfig.setNaming(NamingStrategy.underline_to_camel); //数据库表映射到实体的命名策略
         System.out.println(packageConfig.getModuleName()+"_");
         strategyConfig.setTablePrefix(packageConfig.getModuleName()+"_"); //生成实体时去掉表前缀
@@ -59,6 +56,6 @@ public class CodeGenerator {
         strategyConfig.setControllerMappingHyphenStyle(true);  //url中驼峰转连字符
         autoGenerator.setStrategy(strategyConfig);
         //执行
-        autoGenerator.execute();*/
+        autoGenerator.execute();
     }
 }
