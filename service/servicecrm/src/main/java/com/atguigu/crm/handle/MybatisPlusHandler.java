@@ -1,12 +1,10 @@
-package com.atguigu.edu.handle;
+package com.atguigu.crm.handle;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Component
