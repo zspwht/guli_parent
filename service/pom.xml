@@ -15,6 +15,8 @@
         <module>serviceedu</module>
         <module>service-oss</module>
         <module>servicecrm</module>
+        <module>servicesms</module>
+        <module>serviceuncenter</module>
     </modules>
     <dependencies>
         <dependency>
